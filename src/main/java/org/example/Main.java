@@ -9,5 +9,7 @@ public class Main {
     public static void main(String[] args) {
         UserDB usercollection = UserDB.getInstance();
         System.out.println(usercollection);
+        System.out.println("All Users");
+        System.out.println(usercollection.getAllUsers());
     }
 }

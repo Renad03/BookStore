@@ -17,7 +17,6 @@ public class UserDB {
             System.out.println("Creating user database aho");
             userdb = new UserDB();
         }
-        System.out.println("Database gahza :)");
         return userdb;
     }
 

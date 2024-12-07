@@ -68,6 +68,12 @@ public class User {
         this.email = email;
     }
 
+
+    @Override
+    public String toString() {
+        return "User{name='" + getUsername() + "', email='" + getEmail() + "'}";
+    }
+
     public Document toDocument() {
         return new Document("id", id)
                 .append("username", username)

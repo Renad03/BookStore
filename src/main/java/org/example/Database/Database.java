@@ -15,6 +15,7 @@ public class Database {
 
 
     private Database(String connectionString, String dbName) {
+        System.out.println(connectionString);
         // Create a new MongoClient instance
         mongoClient = MongoClients.create(connectionString);
         // Get the database
@@ -30,7 +31,6 @@ public class Database {
             System.out.println("Creating database aho");
             db = new Database(dbConnectionString, dbName);
         }
-        System.out.println("Database gahza :)");
         return db;
     }
     public MongoCollection<Document> getCollection(String collectionName) {
