@@ -1,4 +1,6 @@
-package src.main.java.org.example.Model;
+package org.example.Model;
+import org.bson.Document;
+
 
 import java.util.ArrayList;
 public class Book  {
@@ -25,7 +27,7 @@ public class Book  {
         return author;
     }
 
-    public float getStock() {
+    public String getStock() {
         return stock;
     }
 
@@ -33,7 +35,7 @@ public class Book  {
         return price;
     }
 
-    public float getRating() {
+    public String getRating() {
         return rating;
     }
 
@@ -50,13 +52,16 @@ public class Book  {
         this.price = price;
     }
 
-    public void setRating(float rating)
+    public void setRating(String rating)
     {
         this.rating = rating;
     }
     public void setCategorie_Type(String categorie_Type) {
         this.categorie_Type = categorie_Type;
     }
+
+
+
     public void displayBookDetails()
     {
         System.out.println ("Title: " + title);
@@ -66,4 +71,34 @@ public class Book  {
         System.out.println ("Rating: " + rating + " stars");
     }
 
+    public String toString() {return "title"+getTitle()+"author"+getAuthor()
+            +"stock"+getStock()+"price"+getPrice()+"rating"+getRating()+"category type"+getCategorie_Type();}
+
+
+        public Document toDocument() {
+        return new Document("title",title)
+                .append("author",author)
+                .append("stock",stock)
+                .append("price",price)
+                .append("rating",rating)
+                .append("categorie_Type",categorie_Type);
+    }
+
+    public static Book fromDocument(Document doc) {
+        return new Book(
+                doc.getString("title"),
+                doc.getString("author"),
+                doc.getString("stock"),
+                doc.getString("price"),
+                doc.getString("rating"),
+                doc.getString("categorie_Type")
+
+
+
+
+        );
+
+    }
+
 }
+

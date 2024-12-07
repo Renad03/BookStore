@@ -1,6 +1,7 @@
-package src.main.java.org.example.Model;
+package org.example.Model;
 
 import java.util.ArrayList;
+
 
 public  abstract class Categorie
 {
