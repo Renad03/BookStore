@@ -1,6 +1,8 @@
-package src.main.java.org.example.Model;
+package org.example.Model;
 
-import src.main.java.org.example.Model.Categorie;
+//import src.main.java.org.example.Model.Categorie;
+
+import org.example.Model.Categorie;
 
 public class Historical extends Categorie
 {

@@ -1,4 +1,7 @@
-package src.main.java.org.example.Model;
+package org.example.Model;
+
+import org.example.Model.Categorie;
+import org.example.Model.Historical;
 
 public class BookFactory {
     public Categorie getCategorie(String Categorie_type)
@@ -9,7 +12,7 @@ public class BookFactory {
         }
         if(Categorie_type.equalsIgnoreCase ("Historical"))
         {
-            return new Historical ();
+            return new Historical();
         }
         return null;
     }

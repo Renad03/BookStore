@@ -5,12 +5,21 @@ import org.bson.Document;
 import java.util.ArrayList;
 public class Book  {
     private String title,author;
-    private float stock,price,rating;
+    private String stock,price,rating;
     private String categorie_Type;
     ArrayList<Book> books = new ArrayList<>();
 
+    public Book(String title, String author, String stock, String price, String rating, String categorieType) {
+        this.title = title;
+        this.author = author;
+        this.stock = stock;
+        this.price = price;
+        this.rating=rating;
+        this.categorie_Type=categorieType;
+    }
+
     // Setters for modifying attributes
-    public void setStock(float stock)
+    public void setStock(String stock)
     {
         this.stock = stock;
     }
@@ -31,7 +40,7 @@ public class Book  {
         return stock;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
@@ -47,7 +56,7 @@ public class Book  {
         this.author = author;
     }
 
-    public void setPrice(float price)
+    public void setPrice(String price)
     {
         this.price = price;
     }
