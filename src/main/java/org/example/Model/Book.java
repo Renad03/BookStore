@@ -79,8 +79,8 @@ public class Book  {
         System.out.println ("Rating: " + rating + " stars");
     }
 
-    public String toString() {return "title"+getTitle()+"author"+getAuthor()
-            +"stock"+getStock()+"price"+getPrice()+"rating"+getRating()+"category type"+getCategorie_Type();}
+    public String toString() {return "title: "+getTitle()+"author: "+getAuthor()
+            +"stock: "+getStock()+"price: "+getPrice()+"rating: "+getRating()+"category type: "+getCategorie_Type();}
 
 
         public Document toDocument() {

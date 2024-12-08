@@ -1,16 +1,16 @@
 package org.example.Model;
 import org.bson.Document;
-import org.example.Database.CRUD;
+import org.example.Database.UserCRUD;
 
 
 public class User {
-    private String id;
-    private String username;
-    private String password;
-    private String address;
-    private  String phoneNumber;
-    private String email;
-     static CRUD<User> userCRUD = new CRUD<>("user", User.class);
+    String id;
+    String username;
+    String password;
+    String address;
+    String phoneNumber;
+    String email;
+     static UserCRUD userCRUD = new UserCRUD();
    static User user;
 
     // Constructors, getters, and setters
@@ -106,16 +106,10 @@ public class User {
                doc.getString("email"));
         return  user2;
     }
-    public void from_Document(Document doc) {
-        // Populate the fields of this existing User object
-        this.username = doc.getString("username");
-        this.password = doc.getString("password");
-    }
-    public static User login(String enteredUsername, String enteredPassword)
+    public static User login(String enteredUsername)
     {
-        Document doc = new Document ("username",enteredUsername).append ("password", enteredPassword);
         User userr = null;
-        userr = userCRUD.getuItem(doc);
+        userr = userCRUD.getUserByUsername(enteredUsername);
         if (userr!=null) {
             System.out.println("Login successful!");
         } else {
