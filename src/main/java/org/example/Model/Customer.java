@@ -1,15 +1,17 @@
 package org.example.Model;
-
-
 import java.util.ArrayList;
 import java.util.Scanner;
-public class Customer {
+public class Customer extends User {
     ArrayList<Book> books = new ArrayList<>();
     ArrayList<String> orderHistory = new ArrayList<> ();
     ArrayList<String> Cart = new ArrayList<> ();
     Scanner scanner = new Scanner(System.in);
 
-        // Method to search books by title
+    public Customer(String username, String password, String phoneNumber, String address, String email) {
+        super (username, password, phoneNumber, address, email);
+    }
+
+    // Method to search books by title
         public String searchBooks() {
             System.out.println("Enter the book you want:");
             String bookName = scanner.nextLine();

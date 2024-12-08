@@ -1,5 +1,6 @@
 package org.example.Model;
 import org.bson.Document;
+import org.example.Database.CRUD;
 
 
 public class User {
@@ -9,6 +10,8 @@ public class User {
     private String address;
     private  String phoneNumber;
     private String email;
+     static CRUD<User> userCRUD = new CRUD<>("user", User.class);
+   static User user;
 
     // Constructors, getters, and setters
     public User(String username, String password, String phoneNumber, String address, String email) {
@@ -19,6 +22,14 @@ public class User {
         this.email = email;
     }
 
+    public User() {
+        // No-argument constructor
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public String getId() {
         return id;
@@ -71,7 +82,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{name='" + getUsername() + "', email='" + getEmail() + "'}";
+        return "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' ;
     }
 
     public Document toDocument() {
@@ -84,12 +99,28 @@ public class User {
     }
 
     public static User fromDocument(Document doc) {
-        return new User(
-                doc.getString("username"),
-                doc.getString("password"),
-                doc.getString("phoneNumber"),
-                doc.getString("address"),
-                doc.getString("email")
-        );
+       User user2=new User ( doc.getString("username"),
+               doc.getString("password"),
+               doc.getString("phoneNumber"),
+               doc.getString("address"),
+               doc.getString("email"));
+        return  user2;
+    }
+    public void from_Document(Document doc) {
+        // Populate the fields of this existing User object
+        this.username = doc.getString("username");
+        this.password = doc.getString("password");
+    }
+    public static User login(String enteredUsername, String enteredPassword)
+    {
+        Document doc = new Document ("username",enteredUsername).append ("password", enteredPassword);
+        User userr = null;
+        userr = userCRUD.getuItem(doc);
+        if (userr!=null) {
+            System.out.println("Login successful!");
+        } else {
+            System.out.println("Invalid username or password.");
+        }
+       return userr;
     }
 }

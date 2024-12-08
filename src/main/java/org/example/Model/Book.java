@@ -7,7 +7,6 @@ public class Book  {
     private String title,author;
     private String stock,price,rating;
     private String categorie_Type;
-    ArrayList<Book> books = new ArrayList<>();
 
     public Book(String title, String author, String stock, String price, String rating, String categorieType) {
         this.title = title;
@@ -101,10 +100,6 @@ public class Book  {
                 doc.getString("price"),
                 doc.getString("rating"),
                 doc.getString("categorie_Type")
-
-
-
-
         );
 
     }
